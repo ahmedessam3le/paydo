@@ -1,0 +1,46 @@
+name: paydo
+description: A simple and pleasant to use personal finance and budget management app that comes with many handy features.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.5
+#  ------------------------------------------------------------------------------------------------
+  flutter_svg: ^2.0.6
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  google_fonts: ^5.0.0
+  intl: ^0.18.1
+  overlay_support: ^2.1.0
+  url_strategy: ^0.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+#---------------------------------------------------------------------------------------------------
+  flutter_launcher_icons_maker: ^0.10.2
+
+flutter_icons:
+  web: true
+  ios: true
+  macos: true
+  linux: true
+  windows: true
+  android: true
+  remove_alpha_ios: true
+  adaptive_icon_background: '#C0028B'
+  icon_background: '#C0028B'
+  image_path: 'assets/images/app_icon_filled.png'
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - assets/images/
