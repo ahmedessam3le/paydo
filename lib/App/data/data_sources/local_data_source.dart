@@ -7,7 +7,7 @@ abstract class LocalDataSource {
   Future<String?> getTransactions();
   Future<void> clearAccount();
   Future<void> clearTransactions();
-  Future<void> clearData();
+  Future<void> clearAppData();
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
@@ -46,7 +46,7 @@ class LocalDataSourceImpl implements LocalDataSource {
   }
 
   @override
-  Future<void> clearData() async {
+  Future<void> clearAppData() async {
     await Future.wait([
       _box.remove(_account),
       _box.remove(_transactions),
