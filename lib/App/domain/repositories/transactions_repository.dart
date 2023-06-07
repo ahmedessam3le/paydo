@@ -13,7 +13,7 @@ abstract class TransactionsRepository {
     required Transaction firstTransaction,
     required Transaction secondTransaction,
   });
-  Future<bool> splitPay({
+  Future<bool> splitPayment({
     required Account account,
     required Transaction firstTransaction,
     required Transaction secondTransaction,
