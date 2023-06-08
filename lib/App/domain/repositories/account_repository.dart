@@ -1,7 +1,7 @@
-import '../entities/account.dart';
+import '../../data/models/account_model.dart';
 
 abstract class AccountRepository {
-  Future<Account> createAccount();
-  Future<Account> getAccountData();
+  Future<AccountModel> createAccount();
+  Future<AccountModel> getAccountData();
   Future<void> clearAccountData();
 }

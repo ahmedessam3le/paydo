@@ -6,8 +6,8 @@ import '../../../core/const/app_values.dart';
 import '../../../core/enums/view_state_enum.dart';
 import '../../../core/utils/app_utils.dart';
 import '../../../core/utils/date_utils.dart';
-import '../../domain/entities/account.dart';
-import '../../domain/entities/transaction.dart';
+import '../../data/models/account_model.dart';
+import '../../data/models/transaction_model.dart';
 import '../../domain/repositories/account_repository.dart';
 import '../../domain/repositories/transactions_repository.dart';
 
@@ -31,9 +31,9 @@ class TransactionDetailsController extends GetxController {
 
   ViewStateEnum popResult = ViewStateEnum.none;
 
-  Account? account;
+  AccountModel? account;
 
-  Transaction? transaction;
+  TransactionModel? transaction;
 
   @override
   void onInit() async {
@@ -71,7 +71,7 @@ class TransactionDetailsController extends GetxController {
       update();
       await transactionsRepository.repeatPayment(
         firstTransaction: transaction!,
-        secondTransaction: Transaction(
+        secondTransaction: TransactionModel(
           id: AppUtils.generateId(),
           itemId: transaction!.itemId,
           itemName: transaction!.itemName,
@@ -102,7 +102,7 @@ class TransactionDetailsController extends GetxController {
         update();
         await transactionsRepository.splitPayment(
           firstTransaction: transaction!,
-          secondTransaction: Transaction(
+          secondTransaction: TransactionModel(
             id: AppUtils.generateId(),
             price: newPrice,
             createdAt:

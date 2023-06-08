@@ -7,6 +7,7 @@ import 'package:paydo/App/domain/entities/transaction.dart';
 
 import '../../domain/repositories/transactions_repository.dart';
 import '../data_sources/local_data_source.dart';
+import '../models/account_model.dart';
 import '../models/transaction_model.dart';
 
 class TransactionsRepositoryImpl implements TransactionsRepository {
@@ -29,7 +30,7 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
 
   @override
   Future<List<TransactionModel>> getTransactions() async {
-    late final List<TransactionModel> transactions;
+    List<TransactionModel> transactions = [];
     try {
       final String? storedTransactions =
           await localDataSource.getTransactions();
@@ -48,12 +49,12 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
 
   @override
   Future<bool> pay({
-    required Account account,
-    required Transaction transaction,
+    required AccountModel account,
+    required TransactionModel transaction,
   }) async {
     try {
       final List<TransactionModel> transactions = await getTransactions();
-      transactions.add(transaction as TransactionModel);
+      transactions.add(transaction);
       List<Map<String, dynamic>> storedTransactions = [];
       for (var element in transactions) {
         storedTransactions.add(element.toJson());
@@ -61,7 +62,7 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
       await Future.wait(
         [
           localDataSource.setTransactions(jsonEncode(storedTransactions)),
-          // localDataSource.setAccount(jsonEncode(account.toJson())),
+          localDataSource.setAccount(jsonEncode(account.toJson())),
         ],
       );
       return true;
@@ -73,7 +74,7 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
 
   @override
   Future<bool> repeatPayment({
-    required Account account,
+    required AccountModel account,
     required Transaction firstTransaction,
     required Transaction secondTransaction,
   }) async {
@@ -89,7 +90,7 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
         await Future.wait(
           [
             localDataSource.setTransactions(jsonEncode(storedTransactions)),
-            // localDataSource.setAccount(jsonEncode(account.toJson())),
+            localDataSource.setAccount(jsonEncode(account.toJson())),
           ],
         );
       }

@@ -1,22 +1,22 @@
-import '../entities/account.dart';
-import '../entities/transaction.dart';
+import '../../data/models/account_model.dart';
+import '../../data/models/transaction_model.dart';
 
 abstract class TransactionsRepository {
-  Future<List<Transaction>> getTransactions();
-  Future<Transaction> getTransactionById(String transactionId);
+  Future<List<TransactionModel>> getTransactions();
+  Future<TransactionModel> getTransactionById(String transactionId);
   Future<bool> pay({
-    required Account account,
-    required Transaction transaction,
+    required AccountModel account,
+    required TransactionModel transaction,
   });
   Future<bool> repeatPayment({
-    required Account account,
-    required Transaction firstTransaction,
-    required Transaction secondTransaction,
+    required AccountModel account,
+    required TransactionModel firstTransaction,
+    required TransactionModel secondTransaction,
   });
   Future<bool> splitPayment({
-    required Account account,
-    required Transaction firstTransaction,
-    required Transaction secondTransaction,
+    required AccountModel account,
+    required TransactionModel firstTransaction,
+    required TransactionModel secondTransaction,
   });
   Future<void> clearTransactions();
   Future<void> clearAppData();

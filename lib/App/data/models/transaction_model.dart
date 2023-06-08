@@ -2,14 +2,14 @@ import '../../domain/entities/transaction.dart';
 
 class TransactionModel extends Transaction {
   TransactionModel({
-    required super.id,
-    required super.type,
-    required super.itemId,
-    required super.itemName,
-    required super.price,
-    required super.createdAt,
-    required super.isRepeated,
-    required super.isSplit,
+    super.id,
+    super.type,
+    super.itemId,
+    super.itemName,
+    super.price,
+    super.createdAt,
+    super.isRepeated,
+    super.isSplit,
   });
 
   factory TransactionModel.fromJson(Map<String, dynamic> json) {
