@@ -38,7 +38,7 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
             .map((e) => TransactionModel.fromJson(e))
             .toList();
         transactions.sort(
-            (first, second) => second.createdAt.compareTo(first.createdAt));
+            (first, second) => second.createdAt!.compareTo(first.createdAt!));
       }
     } catch (error) {
       log('---------------------------- getTransactions ERROR ----------------------------\n${error.toString()}');
@@ -79,9 +79,9 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
   }) async {
     try {
       final List<TransactionModel> transactions = await getTransactions();
-      // transactions
-      //     .removeWhere(((element) => element.id == firstTransaction.id));
-      // transactions.add(firstTransaction as TransactionModel);
+      transactions
+          .removeWhere(((element) => element.id == firstTransaction.id));
+      transactions.add(firstTransaction as TransactionModel);
       transactions.add(secondTransaction as TransactionModel);
       List<Map<String, dynamic>> storedTransactions = [];
       for (var element in transactions) {
@@ -108,9 +108,9 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
   }) async {
     try {
       final List<TransactionModel> transactions = await getTransactions();
-      // transactions
-      //     .removeWhere(((element) => element.id == firstTransaction.id));
-      // transactions.add(firstTransaction as TransactionModel);
+      transactions
+          .removeWhere(((element) => element.id == firstTransaction.id));
+      transactions.add(firstTransaction as TransactionModel);
       transactions.add(secondTransaction as TransactionModel);
       List<Map<String, dynamic>> storedTransactions = [];
       for (var element in transactions) {

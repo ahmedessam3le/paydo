@@ -1,5 +1,5 @@
 class Account {
-  final double amount;
+  double amount;
 
   Account({required this.amount});
 }
