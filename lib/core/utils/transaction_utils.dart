@@ -5,26 +5,26 @@ import '../enums/transaction_enum.dart';
 import '../style/app_icons.dart';
 
 class TransactionUtils {
-  bool isTopUp(final String? type) =>
-      mapTransactionsEnums[type] == TransactionsEnum.topUp;
+  static bool isTopUp(final String? type) =>
+      mapTransactionsEnums[type] == TransactionEnum.topUp;
 
-  String getTransactionIcon(final String? type) {
+  static String getTransactionIcon(final String? type) {
     switch (mapTransactionsEnums[type]) {
-      case TransactionsEnum.pay:
+      case TransactionEnum.pay:
         return AppIcons.icItemPay;
-      case TransactionsEnum.topUp:
+      case TransactionEnum.topUp:
         return AppIcons.icItemTopUp;
       default:
         return '';
     }
   }
 
-  String getTransactionTitle({
+  static String getTransactionTitle({
     required final String? type,
     required final String? merchantTitle,
   }) {
     switch (mapTransactionsEnums[type]) {
-      case TransactionsEnum.topUp:
+      case TransactionEnum.topUp:
         return AppStrings.topUp.tr;
       default:
         return merchantTitle ?? '';

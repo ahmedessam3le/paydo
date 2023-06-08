@@ -122,7 +122,7 @@ class SmallIconButton extends StatelessWidget {
     return Tooltip(
       message: message.tr,
       child: MaterialButton(
-        minWidth: 10,
+        minWidth: 20,
         elevation: 0,
         focusElevation: 0,
         hoverElevation: 0,
@@ -135,7 +135,7 @@ class SmallIconButton extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: Icon(
             icon,
-            size: 22,
+            size: 35,
             color: color,
           ),
         ),
